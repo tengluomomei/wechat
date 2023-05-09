@@ -78,6 +78,39 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    return {
+      title: '这是测试页面',
+      imageUrl: 'https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg',
+      path: '/pages/user/user'
+    }
   },
+  // 捕获
+  parentCap(e){
+    console.log('parent',e)
+  },
+  childCap(e){
+    console.log('child',e)
+  },
+  // 冒泡
+  parentTap(e){
+    console.log('parent',e)
+    // const type = e.currentTarget.dataset.type
+  },
+  childTap(e){
+    console.log('child',e)
+  },
+  getDevice(){
+    wx.getSystemInfo({
+      success (res) {
+        console.log(res)
+      }
+    })
+  },
+  getLoaction(){
+    wx.getLocation({
+      success (res) {
+        console.log(res)
+      }
+    })
+  }
 })

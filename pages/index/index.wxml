@@ -18,6 +18,12 @@
     </block>
   </view>
   <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+    <text class="user-motto h-tit">{{motto}}</text>
   </view>
+
+  <Title msg="hello" test="{{test}}" id="titleBox" bind:changeTitle="titleFun">
+    <!-- <view>这是一个插槽</view> -->
+    <view slot="left">这是一个left插槽</view> 
+    <view slot="right">这是一个right插槽</view> 
+  </Title>
 </view>

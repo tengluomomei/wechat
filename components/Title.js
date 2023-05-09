@@ -1,0 +1,44 @@
+// components/Title.js
+Component({
+  options:{
+    "styleIsolation": "apply-shared",
+    "multipleSlots": true
+  },
+  /**
+   * 组件的属性列表
+   */
+  properties: {
+    msg:{
+      type: String,
+      value: '11111'
+    },
+    test:{
+      type: Function,
+      value: ()=>{}
+    }
+  },
+  observers:{
+    'count': ()=>{
+      console.log('count 发生变化了')
+    }
+  },
+  /**
+   * 组件的初始数据
+   */
+  data: {
+    count: 10
+  },
+
+  /**
+   * 组件的方法列表
+   */
+  methods: {
+    testFun(){
+      this.properties.test()
+      this.triggerEvent('changeTitle', '星期一', '')
+      this.setData({
+        count: this.data.count + 10
+      })
+    }
+  }
+})

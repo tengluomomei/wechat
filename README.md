@@ -190,12 +190,39 @@ taro因为本身支持React、Vue的选择，给了我们更加灵活的选择�
 
 # 组件化开发
   组件类似于页面，自定义组件由 json wxml wxss js 4个文件组成
-  向组件传递数据 - properties： {type:string,value: 'xxx'}
-  组件向外传递事件 – 自定义事件:  this.triggerEvent("change",res)  
+
+  注意样式问题:
+    组件内不能使用id选择器、属性选择器、标签选择器,class样式，只对组件wxml内的节点生效, 对于引用组件的Page页面不生效。
+    外部使用class的样式，只对外部wxml的class生效，对组件内是不生效的,id选择器、属性选择器、标签选择器，会对组件内产生影响；
+    通过 styleIsolation 修改组件的样式隔离选项：
+      isolated：表示启用样式隔离，在自定义组件内外，使用 class 指定的样式将不会相互影响（默认取值）
+      apply-shared：表示页面 wxss 样式将影响到自定义组件，但自定义组件 wxss 中指定的样式不会影响页面
+      shared：表示页面 wxss 样式将影响到自定义组件，自定义组件 wxss 中指定的样式也会影响页面和其他设置 了
+
+  向组件传递数据 - properties：
+    自定义属性：title="{{xxx}}" 
+    自定义方法：bind:xxx="fn1" bindxxx="fn1"
+    properties：{type:string,value: 'xxx'}
+
+  组件向外传递事件 – 自定义事件:  
+    this.triggerEvent("change", detail对象, 触发事件的选项) 
+      触发事件的选项： { bubbles: false, composed: true, capturePhase: false }
+      bubbles: 事件是否冒泡
+      capturePhase:事件是否拥有捕获阶段
+      composed:事件是否可以穿越组件边界，为false时，事件将只能在引用组件的节点树上触发，不进入其他任何组件内部
+    获取组件实例（父子）：this.selectComponent()
+
+
   组件的生命周期:
-    created:
-    attached:
-    detached:
+    created:在组件实例刚刚被创建时执行，刚创建好还没放入到小程序页面中, 此时还不能调用 setData
+    attached:在组件实例进入页面节点树时执行，刚被放入到小程序页面中，还没渲染好, 绝大多数初始化工作可以在这个时机进行
+    detached:在组件实例被从页面节点树移除时执行，组件销毁了时候触发
+    observers： 数据监听器，类似watch，支持多个
+
+  插槽:单个、多个，没有作用域插槽
+    具名插槽或者多个：options:{ multipleSlots:true}
+    不支持默认插槽，可以用css来实现： .content:empty+.default{} 当没有给插槽插入内容时，选中下一个兄弟节点
+
 
 # 网络请求
     微信提供了专属的API接口:wx.request(Object object)
@@ -234,7 +261,19 @@ taro因为本身支持React、Vue的选择，给了我们更加灵活的选择�
   2.其他：
     wx.redirectTo():关闭当前所在页面，再跳转到指定的非TabBar页面。不受页面层数限制。
     wx.navigateTo():关闭当前所在页面，跳转到指定的非TabBar页面，注意页面路径限制是五层。左上角会显示一个返回按钮，可以直接返回到上一层页面。
+  3.参数：
+    url: 'xxx?name='abc'
+    获取：options
 
+# 小程序登录
+  如何识别同一个小程序用户身份
+    认识小程序登录流程
+    openid和unionid
+    获取code
+    换取authToken
+
+# vant
+  官方文档地址 https://youzan.github.io/vant-weapp
 
   
 

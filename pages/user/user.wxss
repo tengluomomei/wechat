@@ -20,3 +20,13 @@ scroll-view {
   max-width:100%;
   max-height:100%;
 }
+.parent_box{
+  width: 300rpx;
+  height: 300rpx;
+  background: yellow;
+}
+.child_box{
+  width: 100rpx;
+  height: 100rpx;
+  background: green;
+}

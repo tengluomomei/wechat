@@ -44,5 +44,18 @@
     <view wx:if="{{onOff}}">显示这段文字 </view>
 
     <view wx:for="{{list}}" wx:key="index" wx:for-index="index" wx:for-item="item">{{index}}-{{item.name}}</view>
+
+    <view>1</view>
+    <button >+1</button>
+
+    <view class="parent_box" id="parent" data-type="1" mark:name="xiaoming" mark:age="12" bindtap="parentTap" capture-bind:tap="parentCap">
+      <view class="child_box" id="child" catchtap="childTap" capture-bind:tap="childCap">子</view>
+    </view>
+    <view>
+      <input type='text' bindinput="" />
+    </view>
+    <button open-type="share">分享按钮</button>
+    <button bindtap="getDevice">获取设备信息</button>
+    <button bindtap="getLoaction">获取地理位置</button>
   </view>
 </view>

@@ -1,0 +1,15 @@
+.h-tit{
+  background: purple;
+  color: #fff;
+  padding: 10% 0;
+  width: 750rpx;
+}
+.h-tit>text{
+  color: red;
+}
+.default{
+  display: none;
+}
+.content:empty+.default{
+  display: block;
+}

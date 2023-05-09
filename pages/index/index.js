@@ -9,7 +9,8 @@ Page({
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     canIUseGetUserProfile: false,
-    canIUseOpenData: wx.canIUse('open-data.type.userAvatarUrl') && wx.canIUse('open-data.type.userNickName') // 如需尝试获取用户信息可改为false
+    canIUseOpenData: wx.canIUse('open-data.type.userAvatarUrl') && wx.canIUse('open-data.type.userNickName'), // 如需尝试获取用户信息可改为false
+    test: ()=>{console.log('我是test 函数')}
   },
   // 事件处理函数
   bindViewTap() {
@@ -44,5 +45,36 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
+  },
+  titleFun(data){
+    console.log(data.detail)
+    const child = this.selectComponent('#titleBox')
+    console.log(child)
+    // wx.showToast({
+    //   title: 'title',
+    //   icon: 'none'
+    // })
+
+    // wx.showModal({
+    //   cancelColor: 'cancelColor',
+    //   title: '提示',
+    //   content: '这是一个模态弹窗',
+    // })
+
+    // wx.showLoading({
+    //   title: 'title',
+    // })
+    // setTimeout(function () {
+    //   wx.hideLoading()
+    // }, 2000)
+
+    wx.showActionSheet({
+      itemList: ['唱歌','跳舞'],
+      success (res) {
+        console.log(res.tapIndex)
+      },
+    })
+
+
   }
 })
