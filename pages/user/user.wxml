@@ -1,0 +1,48 @@
+<view>
+  <view>我的</view>
+  <view>行内元素 <text>1111</text></view>
+  <view class="box">box</view>
+  <block>2222</block>
+  <scroll-view scroll-x>
+    <view class="big">
+      <view class="box">1</view>
+      <view class="box">1</view>
+      <view class="box">1</view>
+      <view class="box">1</view>
+      <view class="box">1</view>
+      <view class="box">1</view>
+    </view>
+  </scroll-view>
+
+  <view class="page-section page-section-spacing swiper">
+    <swiper indicator-dots="{{indicatorDots}}"
+      autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+      <block wx:for="{{background}}" wx:key="*this">
+        <swiper-item>
+          <view class="swiper-item {{item}}">{{item}}</view>
+        </swiper-item>
+      </block>
+    </swiper>
+    <icon class="icon-box-img" type="success" size="93"></icon>
+    <view class="progress-box">
+      <progress percent="20" show-info stroke-width="3"/>
+    </view>
+
+    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+      <view class="picker">
+        当前选择：{{array[index]}}
+      </view>
+    </picker>
+
+    <view class="pic">
+      <image mode="aspectFit" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg" />
+    </view>
+
+    <view>{{text}}</view>
+    <view>{{num > 0 ? '你好': '-1'}}</view>
+    <view class="{{onOff ? 'red' : 'info'}}">wenzi </view>
+    <view wx:if="{{onOff}}">显示这段文字 </view>
+
+    <view wx:for="{{list}}" wx:key="index" wx:for-index="index" wx:for-item="item">{{index}}-{{item.name}}</view>
+  </view>
+</view>
