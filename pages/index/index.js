@@ -19,6 +19,7 @@ Page({
     })
   },
   onLoad() {
+    console.log('page的onLoad')
     if (wx.getUserProfile) {
       this.setData({
         canIUseGetUserProfile: true
@@ -74,7 +75,13 @@ Page({
         console.log(res.tapIndex)
       },
     })
-
-
+  },
+  viewLog(){
+    // wx.navigateTo({
+    //   url: '/pages/logs/logs',
+    // })
+    wx.redirectTo({
+      url: '/pages/logs/logs'
+    })
   }
 })

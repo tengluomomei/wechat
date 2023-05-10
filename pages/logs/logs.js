@@ -5,7 +5,8 @@ Page({
   data: {
     logs: []
   },
-  onLoad() {
+  onLoad(options) {
+    console.log(options)
     this.setData({
       logs: (wx.getStorageSync('logs') || []).map(log => {
         return {
@@ -13,6 +14,11 @@ Page({
           timeStamp: log
         }
       })
+    })
+  },
+  viewuser(){
+    wx.switchTab({
+      url: '/pages/user/user',
     })
   }
 })

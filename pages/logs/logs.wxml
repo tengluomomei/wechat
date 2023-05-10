@@ -1,5 +1,7 @@
 <!--logs.wxml-->
 <view class="container log-list">
+  <navigator url="/pages/index/index" open-type="switchTab">页面</navigator>
+  <view bindtap="viewuser">跳转用户页面</view>
   <block wx:for="{{logs}}" wx:key="timeStamp" wx:for-item="log">
     <text class="log-item">{{index + 1}}. {{log.date}}</text>
   </block>

@@ -210,7 +210,7 @@ taro因为本身支持React、Vue的选择，给了我们更加灵活的选择�
       bubbles: 事件是否冒泡
       capturePhase:事件是否拥有捕获阶段
       composed:事件是否可以穿越组件边界，为false时，事件将只能在引用组件的节点树上触发，不进入其他任何组件内部
-    获取组件实例（父子）：this.selectComponent()
+    获取组件实例（父子）：
 
 
   组件的生命周期:
@@ -222,14 +222,6 @@ taro因为本身支持React、Vue的选择，给了我们更加灵活的选择�
   插槽:单个、多个，没有作用域插槽
     具名插槽或者多个：options:{ multipleSlots:true}
     不支持默认插槽，可以用css来实现： .content:empty+.default{} 当没有给插槽插入内容时，选中下一个兄弟节点
-
-
-# 网络请求
-    微信提供了专属的API接口:wx.request(Object object)
-    出于安全性方面的考虑，小程序官方对数据接口的请求限制:
-      1.只能请求 HTTPS 类型的接口
-      2.必须将接口的域名添加到信任列表中
-    不存在跨域：
 
 # 展示弹窗效果
   四种方式: showToast、showModal、showLoading、showActionSheet
@@ -257,13 +249,50 @@ taro因为本身支持React、Vue的选择，给了我们更加灵活的选择�
     wx.clearStorage(Object object)
 
 # 界面跳转
-  1.tabbar页面:wx.switchTab()
-  2.其他：
-    wx.redirectTo():关闭当前所在页面，再跳转到指定的非TabBar页面。不受页面层数限制。
-    wx.navigateTo():关闭当前所在页面，跳转到指定的非TabBar页面，注意页面路径限制是五层。左上角会显示一个返回按钮，可以直接返回到上一层页面。
-  3.参数：
-    url: 'xxx?name='abc'
-    获取：options
+  申明式导航：
+    <navigator url="xxx" open-type="navigate"></navigator>
+    open-type:
+      1.navigate: 默认方式打开新的页面
+      2.redirect:替换当前页面
+      3.reLaunch: 重新加载当前页面
+      4.navigateBack: 关闭当前页面
+      5.switchTab: 跳转tabbar页面
+  编程式导航：
+    1.tabbar页面:wx.switchTab()
+    2.其他：
+      wx.redirectTo():关闭当前所在页面，再跳转到指定的非TabBar页面。不受页面层数限制。
+      wx.navigateTo():关闭当前所在页面，跳转到指定的非TabBar页面，注意页面路径限制是五层。左上角会显示一个返回按钮，可以直接返回到上一层页面。
+    3.参数：
+      url: 'xxx?name='abc'
+      获取：options
+
+# 生命周期
+  小程序的应用生命周期函数：app.js
+    onLaunch: 当小程序初始化完成时，会触发 onLaunch（全局只触发一次）
+    onShow: 当小程序启动，或从后台进入前台显示，会触发 onShow
+    onHide: 当小程序从前台进入后台，会触发 onHide
+
+  page页面上的生命周期函数：
+    onLoad: 监听页面加载
+    onReady: 监听页面初次渲染完成
+    onShow: 监听页面显示
+    onHide: 监听页面隐藏
+    onUnload: 监听页面卸载
+
+  组件上的生命周期函数：
+    lifetimes:created, attached，detached
+    pageLifetimes:show,hide
+
+# 网络请求
+    微信提供了专属的API接口:wx.request(Object object)
+    出于安全性方面的考虑，小程序官方对数据接口的请求限制:
+      1.只能请求 HTTPS 类型的接口
+      2.必须将接口的域名添加到信任列表中
+    不存在跨域：
+
+# npm包
+  1. npm init
+  2. vant官方文档地址: https://vant-contrib.gitee.io/vant-weapp/#/quickstart
 
 # 小程序登录
   如何识别同一个小程序用户身份
@@ -271,9 +300,6 @@ taro因为本身支持React、Vue的选择，给了我们更加灵活的选择�
     openid和unionid
     获取code
     换取authToken
-
-# vant
-  官方文档地址 https://youzan.github.io/vant-weapp
 
   
 

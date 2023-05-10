@@ -21,6 +21,10 @@
     <text class="user-motto h-tit">{{motto}}</text>
   </view>
 
+  <navigator url="/pages/logs/logs?name=xiaoming&age=12" open-type="navigate">跳转log页面</navigator>
+
+  <view bindtap="viewLog">跳转log页面</view>
+
   <Title msg="hello" test="{{test}}" id="titleBox" bind:changeTitle="titleFun">
     <!-- <view>这是一个插槽</view> -->
     <view slot="left">这是一个left插槽</view> 

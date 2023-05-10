@@ -1,0 +1,6 @@
+<!--pages/ajax.wxml-->
+<view>
+  <text>{{msg}}</text>
+  <van-button type="primary">按钮</van-button>
+  <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" style="height:100rpx">授权登录</button>
+</view>

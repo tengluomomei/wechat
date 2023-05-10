@@ -28,7 +28,25 @@ Component({
   data: {
     count: 10
   },
+  lifetimes:{
+    created(){
+      console.log('组件的created')
+    },
+    attached(){
+      console.log('组件的attached')
+    },
+    detached(){
+      console.log('组件的detached')
+    },
+  },
+  pageLifetimes:{
+    show(){
 
+    },
+    hide(){
+      
+    }
+  },
   /**
    * 组件的方法列表
    */
